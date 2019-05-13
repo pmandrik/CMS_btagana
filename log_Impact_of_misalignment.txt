@@ -1,7 +1,10 @@
-Follow [0] with CMSSW_10_4_0_pre2 from [1] to init CMSSW.
+Follow [0] to init CMSSW. Change the source (skip trigger) following [1]. 
+Run using:
+cmsRun runBTagAnalyzer_cfg.py defaults=2019_Petr runOnData=False maxEvents=100 inputFiles=/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/MINIAODSIM/PU25ns_103X_upgrade2018_design_v4-v2/10000/2EFB11CA-2000-2448-99DD-50DE1125C589.root
 
-
-
+Get input files from [2]. Run using local script avoiding GRID:
+./run_relval.sh
 
 [0] https://twiki.cern.ch/twiki/bin/viewauth/CMS/BTagAnalyzer
-[1] https://twiki.cern.ch/twiki/bin/viewauth/CMS/ImpactofMisalignmentforPOGS
+[1] https://hackmd.io/Q0ecnGzqQvqOptvvfIgRJQ
+[2] https://twiki.cern.ch/twiki/bin/viewauth/CMS/ImpactofMisalignmentforPOGS
