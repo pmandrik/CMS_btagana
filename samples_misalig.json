@@ -1,0 +1,20 @@
+{
+  "TTbar_13_Ideal"                : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4-v2/MINIAODSIM", "t#bar{t} Ideal", 2, true, false,  1],
+  "TTbar_13_WeakMode_Bowing"      : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_WeakMode_Bowing_HS-v1/MINIAODSIM", "t#bar{t} WeakMode_Bowing", 2, true, false,  1],
+  "TTbar_13_WeakMode_Elliptical"  : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_WeakMode_Elliptical_HS-v1/MINIAODSIM", "t#bar{t} WeakMode_Elliptical", 2, true, false,  1],
+  "TTbar_13_WeakMode_LayerRot"    : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_WeakMode_LayerRot_HS-v1/MINIAODSIM", "t#bar{t} WeakMode_LayerRot", 2, true, false,  1],
+  "TTbar_13_WeakMode_Radial"      : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_WeakMode_Radial_HS-v1/MINIAODSIM", "t#bar{t} WeakMode_Radial", 2, true, false,  1],
+  "TTbar_13_WeakMode_Sagitta"     : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_WeakMode_Sagitta_HS-v1/MINIAODSIM", "t#bar{t} WeakMode_Sagitta", 2, true, false,  1],
+  "TTbar_13_WeakMode_Skew"        : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_WeakMode_Skew_HS-v1/MINIAODSIM", "t#bar{t} WeakMode_Skew", 2, true, false,  1],
+  "TTbar_13_WeakMode_Telescope"   : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_WeakMode_Telescope_HS-v1/MINIAODSIM", "t#bar{t} WeakMode_Telescope", 2, true, false,  1],
+  "TTbar_13_WeakMode_Twist"       : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_WeakMode_Twist_HS-v1/MINIAODSIM", "t#bar{t} WeakMode_Twist", 2, true, false,  1],
+  "TTbar_13_WeakMode_zExp"        : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_WeakMode_zExp_HS-v1/MINIAODSIM", "t#bar{t} WeakMode_zExp", 2, true, false,  1],
+  "TTbar_13_RandomGaussianFullTracker_100mum"        : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_RandomGaussianFullTracker_100mum_HS-v1/MINIAODSIM", "t#bar{t} RandomGaussianFullTracker_100mum", 2, true, false,  1],
+  "TTbar_13_RandomGaussianFullTracker_200mum"        : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_RandomGaussianFullTracker_200mum_HS-v1/MINIAODSIM", "t#bar{t} RandomGaussianFullTracker_200mum", 2, true, false,  1],
+  "TTbar_13_RandomP1PXB"      : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_RandomP1PXB_HS-v1/MINIAODSIM", "t#bar{t} RandomP1PXB", 2, true, false,  1],
+  "TTbar_13_RandomP1PXEC"     : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_RandomP1PXEC_HS-v1/MINIAODSIM", "t#bar{t} RandomP1PXEC", 2, true, false,  1],
+  "TTbar_13_RandomTEC"        : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_RandomTEC_HS-v1/MINIAODSIM", "t#bar{t} RandomTEC", 2, true, false,  1],
+  "TTbar_13_RandomTIB"        : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_RandomTIB_HS-v1/MINIAODSIM", "t#bar{t} RandomTIB", 2, true, false,  1],
+  "TTbar_13_RandomTID"        : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_RandomTID_HS-v1/MINIAODSIM", "t#bar{t} RandomTID", 2, true, false,  1],
+  "TTbar_13_RandomTOB"        : [      271.070584, 0, "/RelValTTbar_13/CMSSW_10_4_0_pre2-PU25ns_103X_upgrade2018_design_v4_RandomTOB_HS-v1/MINIAODSIM", "t#bar{t} RandomTOB", 2, true, false,  1]
+}
