@@ -1,0 +1,109 @@
+=============== RElval LOG ========================================================================================================================
+cmsrel CMSSW_10_6_0_pre4
+cd CMSSW_10_6_0_pre4/src
+cmsenv
+
+cmsrel CMSSW_10_5_0_pre1
+cd CMSSW_10_5_0_pre1/src
+cmsenv
+
+setenv CMSSW_GIT_REFERENCE /cvmfs/cms.cern.ch/cmssw.git.daily
+git cms-init
+
+git clone -b 10_5_X_v1.02 --depth 1 https://github.com/cms-btv-pog/RecoBTag-PerformanceMeasurements.git RecoBTag/PerformanceMeasurements
+
+scram b -j8
+
+As it is about 2017 set triggers to:
+https://twiki.cern.ch/twiki/bin/view/CMS/TopTriggerYear2017 - triggers are OK
+
+set defaults in
+nano src/RecoBTag/PerformanceMeasurements/python/defaults/2019_Petr.py
+and change eras to use do not know for what
+
+Datasets taken from:
+https://its.cern.ch/jira/browse/PDMVRELVALS-42
+
+https://cmsweb.cern.ch/das/request?view=list&limit=50&instance=prod%2Fglobal&input=dataset%3D%2FRelValTTbar_13%2FCMSSW_10_6_0_pre3-PU25ns_105X_mc2017_realistic_v7-v2%2FMINIAODSIM
+https://cmsweb.cern.ch/das/request?view=list&limit=50&instance=prod%2Fglobal&input=dataset%3D%2FRelValTTbar_13%2FCMSSW_10_6_0_pre4-PU25ns_106X_mc2017_realistic_v4-v1%2FMINIAODSIM
+https://cmsweb.cern.ch/das/request?view=list&limit=50&instance=prod%2Fglobal&input=dataset%3D%2FSingleMuon%2FCMSSW_10_6_0_pre3-105X_dataRun2_v8_RelVal_sigMu2017*%2FMINIAOD
+https://cmsweb.cern.ch/das/request?view=list&limit=50&instance=prod%2Fglobal&input=dataset%3D%2FSingleMuon%2FCMSSW_10_6_0_pre4-106X_dataRun2_tracker2017_v1_RelVal_sigMu2017*%2FMINIAOD
+
+/SingleMuon/CMSSW_10_6_0_pre3-105X_dataRun2_v8_RelVal_sigMu2017F-v2/MINIAOD
+/SingleMuon/CMSSW_10_6_0_pre3-105X_dataRun2_v8_RelVal_sigMu2017E-v1/MINIAOD
+/SingleMuon/CMSSW_10_6_0_pre3-105X_dataRun2_v8_RelVal_sigMu2017D-v1/MINIAOD
+/SingleMuon/CMSSW_10_6_0_pre3-105X_dataRun2_v8_RelVal_sigMu2017C-v1/MINIAOD
+/SingleMuon/CMSSW_10_6_0_pre3-105X_dataRun2_v8_RelVal_sigMu2017B-v1/MINIAOD
+
+/SingleMuon/CMSSW_10_6_0_pre4-106X_dataRun2_tracker2017_v1_RelVal_sigMu2017F-v1/MINIAOD
+/SingleMuon/CMSSW_10_6_0_pre4-106X_dataRun2_tracker2017_v1_RelVal_sigMu2017E-v1/MINIAOD
+/SingleMuon/CMSSW_10_6_0_pre4-106X_dataRun2_tracker2017_v1_RelVal_sigMu2017D-v1/MINIAOD
+/SingleMuon/CMSSW_10_6_0_pre4-106X_dataRun2_tracker2017_v1_RelVal_sigMu2017C-v1/MINIAOD
+/SingleMuon/CMSSW_10_6_0_pre4-106X_dataRun2_tracker2017_v1_RelVal_sigMu2017B-v1/MINIAOD
+
+data/samples_tracker_relvals.json
+data/samples_tracker_relvals_DATA.json
+
+--proxy=/tmp/x509up_u58479
+crab submit -c %s --proxy=/tmp/x509up_u58479
+
+cmsRun runBTagAnalyzer_cfg.py defaults=2019_Petr runOnData=False maxEvents=100 inputFiles=/store/relval/CMSSW_10_6_0_pre4/SingleMuon/MINIAOD/106X_dataRun2_tracker2017_v1_RelVal_sigMu2017F-v1/20000/FCAAE2F6-4EC3-024D-90DF-6B79B45B1003.root
+
+cmsRun runBTagAnalyzer_cfg.py defaults=2019_Petr runOnData=False maxEvents=100 inputFiles=/store/relval/CMSSW_10_6_0_pre3/RelValTTbar_13/MINIAODSIM/PU25ns_105X_mc2017_realistic_v7-v2/10000/77C23CA6-BFFA-0B40-B63D-F89031F2387D.root
+
+cmsRun runBTagAnalyzer_cfg.py defaults=2019_Petr runOnData=False maxEvents=100 inputFiles=/store/relval/CMSSW_10_6_0_pre3/SingleMuon/MINIAOD/105X_dataRun2_v8_RelVal_sigMu2017F-v2/20000/9AE31B4E-7E52-C449-9B4A-125DA9728B7A.root
+
+cmsRun runBTagAnalyzer_cfg.py defaults=2019_Petr runOnData=True maxEvents=100 inputFiles=$name outFilename="Jet_105X_"$counter
+
+cmsRun runBTagAnalyzer_cfg.py defaults=2019_Petr runOnData=True maxEvents=100 inputFiles=/store/relval/CMSSW_10_6_0_pre3/SingleMuon/MINIAOD/105X_dataRun2_v8_RelVal_sigMu2017F-v2/20000/9AE31B4E-7E52-C449-9B4A-125DA9728B7A.root dataGlobalTag=106X_dataRun2_tracker2017_v1
+
+
+
+python runCode4ttbar.py -c create data/dataToRun_RelVal_060619.py -s
+python runCode4ttbar.py merge data/dataToRun_RelVal_060619.py
+
+
+
+                #Data tag : 19v2 , Norm tag: onlineresult
++-------------+-------------------+-----+------+----------------+---------------+
+| run:fill    | time              | nls | ncms | delivered(/fb) | recorded(/fb) |
++-------------+-------------------+-----+------+----------------+---------------+
+| 297050:5839 | 06/16/17 21:10:54 | 146 | 146  | 0.022          | 0.021         |
+| 300466:6046 | 08/04/17 18:38:40 | 201 | 201  | 0.044          | 0.042         |
+| 302131:6152 | 08/31/17 16:14:40 | 201 | 201  | 0.024          | 0.024         |
+| 304204:6262 | 10/01/17 23:58:58 | 201 | 201  | 0.065          | 0.060         |
+| 305045:6297 | 10/13/17 23:49:36 | 200 | 200  | 0.054          | 0.051         |
++-------------+-------------------+-----+------+----------------+---------------+
+#Summary: 
++-------+------+-----+------+-------------------+------------------+
+| nfill | nrun | nls | ncms | totdelivered(/fb) | totrecorded(/fb) |
++-------+------+-----+------+-------------------+------------------+
+| 5     | 5    | 949 | 949  | 0.208             | 0.198            |
++-------+------+-----+------+-------------------+------------------+
+
+#Check JSON:
+#(run,ls) in json but not in results: []
+                                                      
+                                                                      
+                #Data tag : 19v2 , Norm tag: onlineresult
++-------------+-------------------+-----+------+----------------+---------------+
+| run:fill    | time              | nls | ncms | delivered(/fb) | recorded(/fb) |
++-------------+-------------------+-----+------+----------------+---------------+
+| 297050:5839 | 06/16/17 21:10:54 | 145 | 145  | 0.022          | 0.021         |
+| 300466:6046 | 08/04/17 18:38:40 | 201 | 201  | 0.044          | 0.042         |
+| 302131:6152 | 08/31/17 16:14:40 | 201 | 201  | 0.024          | 0.024         |
+| 304204:6262 | 10/01/17 23:58:58 | 201 | 201  | 0.065          | 0.060         |
+| 305045:6297 | 10/13/17 23:49:36 | 200 | 200  | 0.054          | 0.051         |
++-------------+-------------------+-----+------+----------------+---------------+
+#Summary: 
++-------+------+-----+------+-------------------+------------------+
+| nfill | nrun | nls | ncms | totdelivered(/fb) | totrecorded(/fb) |
++-------+------+-----+------+-------------------+------------------+
+| 5     | 5    | 948 | 948  | 0.208             | 0.198            |
++-------+------+-----+------+-------------------+------------------+
+
+#Check JSON:
+#(run,ls) in json but not in results: []
+
+/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions17/13TeV/PileUp/pileup_latest.txt
+/afs/cern.ch/work/p/pmandrik/swork/2_btag_ttbar/10_tracker_relvals/CMSSW_10_6_0_pre4/src/RecoBTag/PerformanceMeasurements/test/ttbar/06_05_19_trk_relval_data_re_fix_v6
