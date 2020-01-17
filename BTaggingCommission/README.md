@@ -47,7 +47,12 @@
       config_file.write('config.JobType.allowUndistributedCMSSW = True\n')
       config_file.write('config.Site.storageSite = "T2_CH_CERN"\n')
    ```
-* Submit with submitHelper.sh (https://github.com/pmandrik/CMS_btagana/blob/master/BTaggingCommission/ntupler/submitHelper.sh) - nothing as wrapper around submitToGrid.py script
+* Submit with submitHelper.sh (https://github.com/pmandrik/CMS_btagana/blob/master/BTaggingCommission/ntupler/submitHelper.sh) - nothing as wrapper around submitToGrid.py script. Be sure to setup GRID enviroment first:
+   ```shell
+   source /cvmfs/cms.cern.ch/crab3/crab.sh
+   grid-proxy-init
+   voms-proxy-init -voms cms
+   ```
    * take lumimask from https://twiki.cern.ch/twiki/bin/view/CMS/PdmV (such as Golden JSON from https://twiki.cern.ch/twiki/bin/view/CMS/PdmV2018Analysis#DATA)
     
 ### Plotting Step
@@ -60,7 +65,7 @@
   ```shell
   mergeJSON.py --output=merged.json processedLumis_1.json processedLumis_2.json ...
   ```
-  * calculate processed luminosity using brilcalc
+  * calculate processed luminosity using brilcalc (https://cms-service-lumi.web.cern.ch/cms-service-lumi/brilwsdoc.html)
   ```shell
   export PATH=$HOME/.local/bin:/cvmfs/cms-bril.cern.ch/brilconda/bin:$PATH
   brilcalc lumi -u /fb -i merged.json
@@ -77,14 +82,15 @@
   python runCode4ttbar.py pu merged.json pileup_latest.txt
   ```
   
-* Create batch jobs (-c) and submit (-s) the jobs (modify data/dataToRun_Tag.py):
+* Create batch HTCondor jobs (-c) and submit (-s) the jobs (modify data/dataToRun_Tag.py):
   ```shell
   python runCode4ttbar.py -c create data/dataToRun_Tag.py -s
   ```
   * some things are hardcoded :D, so change the trigger list in line in runCode4ttbar.py:
   ```            triggers = ['HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v',```
   and update paths in runCode4ttbar.sh
-  
+  * status of the task could be checked using *condor_q* command (https://batchdocs.web.cern.ch/local/quick.html)
+
 * Merge all histogram:
   ```shell
   python runCode4ttbar.py merge data/dataToRun_Tag.py
