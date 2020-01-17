@@ -33,6 +33,7 @@
         'groups':['Petr','TTbar','PFMuon'],
     }
     ```
+  * be sure to check the *mcGlobalTag*, *dataGlobalTag* and *JPCalibration* variables. The global tag should be the same as used during the production of the samples and they could be found at CMS DAS for example. *JPCalibration* usually taken from the BTagAnalyzer recipes but sometimes could only be googled in the Indico, TWiki, Gitgub etc :D. Wrong *JPCalibration* lead to the segmentation fault.
 * Check production locally:
    ```shell
    cmsRun ${CMSSW_BASE}/src/RecoBTag/PerformanceMeasurements/test/runBTagAnalyzer_cfg.py defaults=YOUR_DEFAULTS maxEvents=100 runOnData=False
